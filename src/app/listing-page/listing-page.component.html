@@ -12,6 +12,10 @@
           <mat-card-subtitle>{{car.model}} · {{car.year}}</mat-card-subtitle>
         </div>
 
+        <button mat-icon-button (click)="redirectToEdit(car.id)" class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>edit</mat-icon>
+        </button>
+
       </mat-card-header>
 
       <img mat-card-image src="{{car.image}}" alt="img">

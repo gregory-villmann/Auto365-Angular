@@ -19,7 +19,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 const routes: Routes = [
   {path: '', component: ListingsPageComponent},
   {path: 'car/:id', component: ListingPageComponent},
-  {path: 'add-car', component: AddEditListingPageComponent}
+  {path: 'add-car', component: AddEditListingPageComponent},
+  {path: 'car/:id/edit', component: AddEditListingPageComponent}
 ];
 
 @NgModule({

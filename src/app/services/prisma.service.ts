@@ -21,6 +21,10 @@ export class PrismaService {
   }
 
   postCar$(carForm: any): Observable<Car>{
-    return this.http.post<Car>(`${this.baseUrl}/cars/new`, carForm)
+    return this.http.post<Car>(`${this.baseUrl}/cars/new`, carForm);
+  }
+
+  updateCar$(existingId: number, carForm: any): Observable<Car>{
+    return this.http.put<Car>(`${this.baseUrl}/cars/${existingId}`, carForm);
   }
 }

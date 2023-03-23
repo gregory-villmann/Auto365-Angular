@@ -40,7 +40,23 @@ export class AddEditListingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.carForm = this.fb.group(this.formFields);
-    this.state = this.AddEditState.ADD;
+
+    if (this._route.snapshot.routeConfig?.path === 'car/:id/edit' && this._route.snapshot.params['id'] !== null) {
+      this.state = this.AddEditState.EDIT;
+      this.existingCarId = this._route.snapshot.params['id'];
+      this.existingCarId && this.service.getCar$(this.existingCarId).subscribe( car => {
+        this.carForm?.patchValue({
+          make: car.make,
+          model: car.model,
+          year: car.year,
+          mileage: car.mileage,
+          price: car.price,
+          image: car.image
+        })
+      })
+    } else {
+      this.state = this.AddEditState.ADD;
+    }
   }
 
   onSubmit() {
@@ -49,6 +65,16 @@ export class AddEditListingPageComponent implements OnInit {
         this.service.postCar$(this.carForm.value).subscribe(
           (res) => {
             this.snackBar.open('Auto salvestatud', '', { duration: 3000, horizontalPosition:"end", verticalPosition: "top" });
+            this.router.navigate(['car', res['id']])
+          },
+          error => {
+            this.snackBar.open('Error auto salvestamisel: ' + JSON.stringify(error.error.error), '', { duration: 3000, horizontalPosition:"end", verticalPosition: "top"  });
+          }
+        )
+      } else if (this.state === this.AddEditState.EDIT && this.existingCarId) {
+        this.service.updateCar$(this.existingCarId ,this.carForm.value).subscribe(
+          (res) => {
+            this.snackBar.open('Auto uuendatud', '', { duration: 3000, horizontalPosition:"end", verticalPosition: "top" });
             this.router.navigate(['car', res['id']])
           },
           error => {
@@ -64,6 +90,6 @@ export class AddEditListingPageComponent implements OnInit {
   }
 
   redirectToHome() {
-    this.router.navigate(['cars']);
+    this.router.navigate(['']);
   }
 }

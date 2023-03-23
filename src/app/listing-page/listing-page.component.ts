@@ -23,6 +23,10 @@ export class ListingPageComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  redirectToEdit(id: number) {
+    this.router.navigate(['car', id, 'edit']);
+  }
+
   Euro = new Intl.NumberFormat('de-DE', {
     style: 'currency',
     currency: 'Eur',
