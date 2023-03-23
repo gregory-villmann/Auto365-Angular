@@ -6,8 +6,11 @@
     <span>Auto365</span>
   </div>
 
-  <div>
-    <button mat-raised-button (click)="routeToAddPage()">
+  <div class="action-button-row">
+    <button mat-raised-button class="action-button" (click)="routeToLogin()">
+      <mat-icon>login</mat-icon> Logi Sisse
+    </button>
+    <button mat-raised-button class="action-button" (click)="routeToAddPage()">
       <mat-icon>add_circle</mat-icon> Lisa auto
     </button>
   </div>

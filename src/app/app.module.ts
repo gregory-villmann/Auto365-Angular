@@ -15,12 +15,17 @@ import { AddEditListingPageComponent } from './add-edit-listing-page/add-edit-li
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { RegistrationPageComponent } from './authentication/registration-page/registration-page.component';
+import { LoginPageComponent } from './authentication/login-page/login-page.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 const routes: Routes = [
   {path: '', component: ListingsPageComponent},
   {path: 'car/:id', component: ListingPageComponent},
   {path: 'add-car', component: AddEditListingPageComponent},
-  {path: 'car/:id/edit', component: AddEditListingPageComponent}
+  {path: 'car/:id/edit', component: AddEditListingPageComponent},
+  {path: 'register', component: RegistrationPageComponent},
+  {path: 'login', component: LoginPageComponent}
 ];
 
 @NgModule({
@@ -28,7 +33,9 @@ const routes: Routes = [
     AppComponent,
     ListingsPageComponent,
     ListingPageComponent,
-    AddEditListingPageComponent
+    AddEditListingPageComponent,
+    RegistrationPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,8 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   exports:[RouterModule],
   providers: [MatSnackBarModule],

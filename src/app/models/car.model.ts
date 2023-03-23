@@ -13,6 +13,15 @@ export interface CarsResponse {
   size: number;
 }
 
+export interface CarForm {
+  make: string;
+  model: string;
+  year: number;
+  mileage: number;
+  price: number;
+  image: string;
+}
+
 export enum AddEditState {
   EDIT = 'EDIT',
   ADD = 'ADD'

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { PageEvent } from "@angular/material/paginator";
-import { PrismaService } from "../services/prisma.service";
+import { CarService } from "../services/car.service";
 import {Car} from "../models/car.model";
 import {Router} from "@angular/router";
 
@@ -16,7 +16,7 @@ export class ListingsPageComponent {
   pageIndex: number = 0;
   pageSize: number = 16;
 
-  constructor(private http: HttpClient, private service: PrismaService, private router: Router) {
+  constructor(private http: HttpClient, private service: CarService, private router: Router) {
     this.getCars(this.pageIndex, this.pageSize);
   }
 

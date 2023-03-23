@@ -1,4 +1,4 @@
-.car-card {
+.card {
   width: 60vw;
   margin-top: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px!important;
@@ -36,4 +36,9 @@ button {
 .title-container {
   flex-grow: 1;
   text-align: center;
+}
+
+.size-20 {
+  width: 25px;
+  height: 25px;
 }

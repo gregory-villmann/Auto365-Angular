@@ -20,4 +20,8 @@ export class AppComponent {
   routeToAddPage() {
     this.router.navigate(['add-car']);
   }
+
+  routeToLogin() {
+    this.router.navigate(['login']);
+  }
 }

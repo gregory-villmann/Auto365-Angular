@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Car, CarsResponse} from "../models/car.model";
+import {Car, CarForm, CarsResponse} from "../models/car.model";
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class PrismaService {
+export class CarService {
 
   private baseUrl = 'http://localhost:3000';
 
@@ -20,7 +20,7 @@ export class PrismaService {
     return this.http.get<Car>(`${this.baseUrl}/cars/${id}`);
   }
 
-  postCar$(carForm: any): Observable<Car>{
+  postCar$(carForm: CarForm): Observable<Car>{
     return this.http.post<Car>(`${this.baseUrl}/cars/new`, carForm);
   }
 

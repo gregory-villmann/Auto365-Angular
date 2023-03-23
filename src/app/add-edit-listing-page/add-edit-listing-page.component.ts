@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {PrismaService} from "../services/prisma.service";
+import {CarService} from "../services/car.service";
 import { AddEditState } from "../models/car.model";
 
 @Component({
@@ -30,10 +29,9 @@ export class AddEditListingPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
     private router: Router,
     private _route: ActivatedRoute,
-    private service: PrismaService,
+    private service: CarService,
     public snackBar: MatSnackBar,
   ) {}
 

@@ -1,0 +1,45 @@
+<div class="main">
+  <mat-card class="card">
+    <mat-card-header class="header">
+      <div class="title-container">
+        <mat-card-title>Registreeri</mat-card-title>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <form *ngIf="registrationForm" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required type="email" email autocomplete="email"/>
+          <mat-error *ngIf="registrationForm.controls['email'].invalid">Emaili formaat on vale</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Eesnimi</mat-label>
+          <input matInput formControlName="firstName" required autocomplete="given-name"/>
+          <mat-error *ngIf="registrationForm.controls['lastName'].invalid">Eesnimi on kohustuslik</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Perekonnanimi</mat-label>
+          <input matInput formControlName="lastName" required autocomplete="family-name"/>
+          <mat-error *ngIf="registrationForm.controls['firstName'].invalid">Perekonnanimi on kohustuslik</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Salasõna</mat-label>
+          <input matInput formControlName="password" required type="password" [minlength]="5" autocomplete="new-password"/>
+          <mat-error *ngIf="registrationForm.controls['password'].invalid">Salasõna peab olema pikem kui 5 tähemärki</mat-error>
+        </mat-form-field>
+
+        <div class="action-buttons">
+          <ng-container *ngIf="!loading; else loadingButton">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!registrationForm.valid">Loo kasutaja</button>
+          </ng-container>
+          <ng-template #loadingButton>
+            <button mat-raised-button color="primary" [disabled]="true"><mat-icon class="size-20"><mat-spinner diameter="25"></mat-spinner></mat-icon></button>
+          </ng-template>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
