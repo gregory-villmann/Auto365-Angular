@@ -86,7 +86,18 @@ export class AddEditListingPageComponent implements OnInit {
   }
 
   deleteCar() {
-    console.log("DELETING CAR"); // TODO car deleting
+    if(this.existingCarId && this.state === this.AddEditState.EDIT) {
+      this.service.deleteCar$(this.existingCarId)
+        .subscribe(
+          (res: any) => {
+            this.snackBar.open(`${res.make} ${res.model} ${res.year} on kustutatud!`, '', { duration: 3000, horizontalPosition:"end", verticalPosition: "top" });
+            this.router.navigate([''])
+          },
+          (error) => {
+            this.snackBar.open(`Error auto kustutamisel: ${error.error()}`, '', { duration: 3000, horizontalPosition:"end", verticalPosition: "top"  });
+          }
+        );
+    }
   }
 
   redirectToHome() {

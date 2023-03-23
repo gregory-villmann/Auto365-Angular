@@ -27,4 +27,8 @@ export class PrismaService {
   updateCar$(existingId: number, carForm: any): Observable<Car>{
     return this.http.put<Car>(`${this.baseUrl}/cars/${existingId}`, carForm);
   }
+
+  deleteCar$(existingId: number): Observable<Car>{
+    return this.http.delete<Car>(`${this.baseUrl}/cars/${existingId}`);
+  }
 }
