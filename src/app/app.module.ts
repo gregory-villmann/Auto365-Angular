@@ -11,17 +11,23 @@ import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {HttpClientModule} from "@angular/common/http";
 import { ListingPageComponent } from './listing-page/listing-page.component';
+import { AddEditListingPageComponent } from './add-edit-listing-page/add-edit-listing-page.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const routes: Routes = [
   {path: '', component: ListingsPageComponent},
-  {path: 'car/:id', component: ListingPageComponent}
+  {path: 'car/:id', component: ListingPageComponent},
+  {path: 'add-car', component: AddEditListingPageComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ListingsPageComponent,
-    ListingPageComponent
+    ListingPageComponent,
+    AddEditListingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +39,13 @@ const routes: Routes = [
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   exports:[RouterModule],
-  providers: [],
+  providers: [MatSnackBarModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

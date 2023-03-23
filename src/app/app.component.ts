@@ -16,4 +16,8 @@ export class AppComponent {
   redirectHome() {
     this.router.navigate(['']);
   }
+
+  routeToAddPage() {
+    this.router.navigate(['add-car']);
+  }
 }

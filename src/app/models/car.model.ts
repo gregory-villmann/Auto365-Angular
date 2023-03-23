@@ -12,3 +12,8 @@ export interface CarsResponse {
   cars: Car[];
   size: number;
 }
+
+export enum AddEditState {
+  EDIT = 'EDIT',
+  ADD = 'ADD'
+}

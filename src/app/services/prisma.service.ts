@@ -19,4 +19,8 @@ export class PrismaService {
   getCar$(id: number): Observable<Car>{
     return this.http.get<Car>(`${this.baseUrl}/cars/${id}`);
   }
+
+  postCar$(carForm: any): Observable<Car>{
+    return this.http.post<Car>(`${this.baseUrl}/cars/new`, carForm)
+  }
 }
