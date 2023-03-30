@@ -5,9 +5,9 @@
     </button>
     <span>Auto365</span>
   </div>
-
   <div class="action-button-row">
     <ng-container *ngIf="auth.isAuthenticated(); else notAuthenticated">
+      <span class="userName"><span class="wave">👋</span> {{getUserName()}}</span>
       <button mat-raised-button class="action-button" (click)="routeToAddPage()">
         <mat-icon>add_circle</mat-icon> Lisa auto
       </button>

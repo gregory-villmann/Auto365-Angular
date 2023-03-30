@@ -39,6 +39,7 @@ export class LoginPageComponent implements OnInit {
           if (res) {
             this.loading = false;
             localStorage.setItem('token', res.uuid);
+            localStorage.setItem('name', res.firstName);
             this.router.navigate(['']);
           }
         },

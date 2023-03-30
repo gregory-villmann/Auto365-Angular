@@ -2,6 +2,14 @@ mat-toolbar {
   justify-content: space-between;
 }
 
+.userName {
+  padding-right: 25px !important;
+}
+
+.wave {
+  padding-right: 5px;
+}
+
 .action-button-row > * {
-  margin: 0 5px!important;
+  margin: 0 5px !important;
 }

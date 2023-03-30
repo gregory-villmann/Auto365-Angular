@@ -26,7 +26,7 @@ export class AuthService implements CanLoad {
         () => {
         }
       )
-      localStorage.removeItem(this.TOKEN_KEY);
+      localStorage.clear();
       this.router.navigate(['/login'])
     }
   }

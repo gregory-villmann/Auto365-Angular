@@ -1,3 +1,4 @@
 export interface TokenResponse {
-  uuid: string
+  uuid: string,
+  firstName: string
 }

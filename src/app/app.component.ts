@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from "@angular/router";
+import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 
 @Component({
@@ -10,7 +10,6 @@ import {AuthService} from "./services/auth.service";
 
 export class AppComponent {
   title = 'Auto365';
-
   constructor(private router: Router, public auth: AuthService) {
   }
 
@@ -24,5 +23,14 @@ export class AppComponent {
 
   routeToLogin() {
     this.router.navigate(['login']);
+  }
+
+  getUserName(): string {
+    let name = localStorage.getItem('name');
+    if (name) {
+      return name;
+    } else {
+      return 'Guest';
+    }
   }
 }
