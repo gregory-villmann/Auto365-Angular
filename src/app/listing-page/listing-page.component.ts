@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {Car} from "../models/car.model";
 import {CarService} from "../services/car.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-listing-page',
@@ -12,7 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ListingPageComponent implements OnInit {
   car$: Observable<Car> | undefined;
 
-  constructor(private service: CarService, private _route: ActivatedRoute, private router: Router) {}
+  constructor(private service: CarService, private _route: ActivatedRoute, private router: Router, public auth: AuthService) {}
 
   ngOnInit() {
     const id = this._route.snapshot.params['id'];
