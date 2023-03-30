@@ -10,22 +10,24 @@ import { ListingsPageComponent } from './listings-page/listings-page.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {HttpClientModule} from "@angular/common/http";
-import { ListingPageComponent } from './listing-page/listing-page.component';
-import { AddEditListingPageComponent } from './add-edit-listing-page/add-edit-listing-page.component';
+import {ListingPageComponent} from './listing-page/listing-page.component';
+import {AddEditListingPageComponent} from './add-edit-listing-page/add-edit-listing-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { RegistrationPageComponent } from './authentication/registration-page/registration-page.component';
-import { LoginPageComponent } from './authentication/login-page/login-page.component';
+import {RegistrationPageComponent} from './authentication/registration-page/registration-page.component';
+import {LoginPageComponent} from './authentication/login-page/login-page.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {SignedInAuthGuard} from "./services/signedInAuth.guard";
+import {SignedOutAuthGuard} from "./services/signedOutAuth.guard";
 
 const routes: Routes = [
   {path: '', component: ListingsPageComponent},
   {path: 'car/:id', component: ListingPageComponent},
-  {path: 'add-car', component: AddEditListingPageComponent},
-  {path: 'car/:id/edit', component: AddEditListingPageComponent},
-  {path: 'register', component: RegistrationPageComponent},
-  {path: 'login', component: LoginPageComponent}
+  {path: 'add-car', component: AddEditListingPageComponent, canActivate: [SignedInAuthGuard]},
+  {path: 'car/:id/edit', component: AddEditListingPageComponent, canActivate: [SignedInAuthGuard]},
+  {path: 'register', component: RegistrationPageComponent, canActivate: [SignedOutAuthGuard]},
+  {path: 'login', component: LoginPageComponent, canActivate: [SignedOutAuthGuard]}
 ];
 
 @NgModule({

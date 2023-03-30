@@ -1,7 +1,45 @@
-<p>login-page works!</p>
+<div class="main">
+  <mat-card class="card">
+    <mat-card-header class="header">
+      <div class="title-container">
+        <mat-card-title>Logi sisse</mat-card-title>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required type="email" email autocomplete="email"/>
+          <mat-error *ngIf="loginForm.controls['email'].invalid">Emaili formaat on vale</mat-error>
+        </mat-form-field>
 
+        <mat-form-field>
+          <mat-label>Salasõna</mat-label>
+          <input matInput formControlName="password" required type="password" autocomplete="password"/>
+          <mat-error *ngIf="loginForm.controls['password'].invalid">Salasõna on kohustuslik</mat-error>
+        </mat-form-field>
 
-<div>
-  <div>Pole kontot?</div>
-  <button mat-raised-button (click)="redirectToRegister()">Loo konto</button>
+        <div class="action-buttons">
+          <ng-container *ngIf="!loading; else loadingButton">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Logi sisse</button>
+          </ng-container>
+          <ng-template #loadingButton>
+            <button mat-raised-button color="primary" [disabled]="true"><mat-icon class="size-20"><mat-spinner diameter="25"></mat-spinner></mat-icon></button>
+          </ng-template>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header class="header">
+      <div class="title-container">
+        <mat-card-title>Pole kontot?</mat-card-title>
+        <mat-card-subtitle>Loo endale konto. Registreerimine on kerge!</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content class="login-button-container">
+        <button mat-raised-button color="primary" (click)="redirectToRegister()">Loo konto</button>
+    </mat-card-content>
+  </mat-card>
 </div>
