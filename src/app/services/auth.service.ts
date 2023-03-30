@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {CanLoad, Router} from "@angular/router";
+import {SessionService} from "./session.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService implements CanLoad {
   private readonly TOKEN_KEY = 'token';
-  constructor(private router: Router) {
+
+  constructor(private router: Router, private service: SessionService) {
   }
 
   isAuthenticated(): boolean {
@@ -14,15 +16,18 @@ export class AuthService implements CanLoad {
   }
 
   canLoad():boolean {
-    if (this.isAuthenticated()) {
-      return true;
-    } else {
-      //this.router.navigate(['']);
-      return false;
-    }
+    return this.isAuthenticated();
   }
 
   logout() {
-    localStorage.removeItem(this.TOKEN_KEY);
+    const token = localStorage.getItem(this.TOKEN_KEY);
+    if (token) {
+      this.service.deleteSession$(token).subscribe(
+        () => {
+        }
+      )
+      localStorage.removeItem(this.TOKEN_KEY);
+      this.router.navigate(['/login'])
+    }
   }
 }

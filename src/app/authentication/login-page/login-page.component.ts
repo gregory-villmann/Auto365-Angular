@@ -31,7 +31,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("login sisse");
     if (this.loginForm?.valid) {
       this.loginForm?.disable();
       this.loading = true;

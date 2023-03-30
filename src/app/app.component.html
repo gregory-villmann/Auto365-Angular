@@ -11,8 +11,9 @@
       <button mat-raised-button class="action-button" (click)="routeToAddPage()">
         <mat-icon>add_circle</mat-icon> Lisa auto
       </button>
-      <button mat-raised-button class="action-button" (click)="auth.logout(); redirectHome()">
-        <mat-icon>login</mat-icon> Logi välja
+      <button mat-raised-button class="action-button" (click)="auth.logout()">
+        <mat-icon>login</mat-icon>
+        Logi välja
       </button>
     </ng-container>
     <ng-template #notAuthenticated>
