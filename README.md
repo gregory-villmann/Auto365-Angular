@@ -12,3 +12,8 @@ This is the Front-end of the project, the Back-end is available here: https://gi
 ## Development server
 
 1. Run `npm run start` in the root to start the server, which will be available at `http://localhost:4200/`
+
+## E2E Testing
+
+* Run `npx cypres run` to run tests in headless mode or `npx cypress open`, which will open the Cypress Test Runner in
+  interactive mode

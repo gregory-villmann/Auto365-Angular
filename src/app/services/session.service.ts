@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {getAuthHeader} from "../util/auth.util";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class SessionService {
     return this.http.post(`${this.baseUrl}/sessions`, loginForm);
   }
 
-  deleteSession$(token: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/sessions`, {headers: new HttpHeaders({'token': token})});
+  deleteSession$(): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/sessions`, getAuthHeader());
   }
 }

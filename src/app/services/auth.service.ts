@@ -6,7 +6,7 @@ import {SessionService} from "./session.service";
   providedIn: 'root'
 })
 export class AuthService implements CanLoad {
-  private readonly TOKEN_KEY = 'token';
+  private readonly TOKEN_KEY = 'Authorization';
 
   constructor(private router: Router, private service: SessionService) {
   }
@@ -22,7 +22,7 @@ export class AuthService implements CanLoad {
   logout() {
     const token = localStorage.getItem(this.TOKEN_KEY);
     if (token) {
-      this.service.deleteSession$(token).subscribe(
+      this.service.deleteSession$().subscribe(
         () => {
         }
       )

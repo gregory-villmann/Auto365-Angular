@@ -1,6 +1,6 @@
 <div class="car-container">
   <ng-container *ngFor="let car of cars">
-    <mat-card (click)="redirectToDetail(car)" class="car-tile">
+    <mat-card (click)="redirectToDetail(car)" class="car-tile" id="{{car.id}}" data-cy="detailView">
       <img mat-card-image src="{{car.image}}" alt="Car Image">
       <mat-card-content>
         <h3>{{car.make}} {{car.model}}</h3>
