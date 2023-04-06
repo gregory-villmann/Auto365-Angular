@@ -67,7 +67,12 @@
               "browserTarget": "Auto365-Angular:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "ssl": true,
+            "sslKey": "src/assets/sslcertificate/server.key",
+            "sslCert": "src/assets/sslcertificate/server.crt"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

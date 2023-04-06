@@ -9,7 +9,7 @@ import {getAuthHeader} from "../util/auth.util";
 })
 export class CarService {
 
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'https://localhost:3000';
 
   constructor(private http: HttpClient) {
   }
