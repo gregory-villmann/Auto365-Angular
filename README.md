@@ -9,9 +9,11 @@ This is the Front-end of the project, the Back-end is available here: https://gi
 
 1. To install dependencies, run `npm install` in the project root
 2. Generate .key and .crt files to enable HTTPS
-  * Run `openssl genrsa -out ./src/assets/sslcertificate/server.key 2048`
-  *
-  Run `openssl x509 -req -in ./src/assets/sslcertificate/server.csr -signkey ./src/assets/sslcertificate/server.key -out ./src/assets/sslcertificate/server.crt`
+
+* Run `openssl genrsa -out ./src/assets/sslcertificate/server.key 2048`
+*
+
+Run `openssl x509 -req -in ./src/assets/sslcertificate/server.csr -signkey ./src/assets/sslcertificate/server.key -out ./src/assets/sslcertificate/server.crt`
 
 ## Development server
 

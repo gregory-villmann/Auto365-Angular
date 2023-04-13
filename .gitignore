@@ -37,6 +37,7 @@ yarn-error.log
 testem.log
 /typings
 /src/assets/sslcertificate/server.key
+/src/assets/sslcertificate/server.crt
 
 # System files
 .DS_Store

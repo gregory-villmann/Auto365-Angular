@@ -20,6 +20,8 @@ import {LoginPageComponent} from './authentication/login-page/login-page.compone
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {SignedInAuthGuard} from "./services/signedInAuth.guard";
 import {SignedOutAuthGuard} from "./services/signedOutAuth.guard";
+import {LogsPageComponent} from './logs-page/logs-page.component';
+import {MatTableModule} from "@angular/material/table";
 
 const routes: Routes = [
   {path: '', component: ListingsPageComponent},
@@ -27,7 +29,8 @@ const routes: Routes = [
   {path: 'add-car', component: AddEditListingPageComponent, canActivate: [SignedInAuthGuard]},
   {path: 'car/:id/edit', component: AddEditListingPageComponent, canActivate: [SignedInAuthGuard]},
   {path: 'register', component: RegistrationPageComponent, canActivate: [SignedOutAuthGuard]},
-  {path: 'login', component: LoginPageComponent, canActivate: [SignedOutAuthGuard]}
+  {path: 'login', component: LoginPageComponent, canActivate: [SignedOutAuthGuard]},
+  {path: 'logs', component: LogsPageComponent, canActivate: [SignedInAuthGuard]}
 ];
 
 @NgModule({
@@ -37,7 +40,8 @@ const routes: Routes = [
     ListingPageComponent,
     AddEditListingPageComponent,
     RegistrationPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    LogsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,8 @@ const routes: Routes = [
     MatSnackBarModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule
   ],
   exports:[RouterModule],
   providers: [MatSnackBarModule],
