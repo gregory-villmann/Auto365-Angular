@@ -23,7 +23,7 @@ export class CarService {
   }
 
   postCar$(carForm: CarForm): Observable<Car>{
-    return this.http.post<Car>(`${this.baseUrl}/cars/new`, carForm, getAuthHeader());
+    return this.http.post<Car>(`${this.baseUrl}/cars`, carForm, getAuthHeader());
   }
 
   updateCar$(existingId: number, carForm: any): Observable<Car>{

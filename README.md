@@ -9,15 +9,13 @@ This is the Front-end of the project, the Back-end is available here: https://gi
 
 1. To install dependencies, run `npm install` in the project root
 2. Generate .key and .crt files to enable HTTPS
-
-* Run `openssl genrsa -out ./src/assets/sslcertificate/server.key 2048`
-*
-
-Run `openssl x509 -req -in ./src/assets/sslcertificate/server.csr -signkey ./src/assets/sslcertificate/server.key -out ./src/assets/sslcertificate/server.crt`
+  * Run `openssl genrsa -out ./src/assets/sslcertificate/server.key 2048`
+  *
+  Run `openssl x509 -req -in ./src/assets/sslcertificate/server.csr -signkey ./src/assets/sslcertificate/server.key -out ./src/assets/sslcertificate/server.crt`
 
 ## Development server
 
-1. Run `npm run start` in the root to start the server, which will be available at `http://localhost:4200/`
+1. Run `npm run start` in the root to start the server, which will be available at `https://localhost:4200/`
 
 ## E2E Testing
 
