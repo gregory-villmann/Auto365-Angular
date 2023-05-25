@@ -5,6 +5,7 @@ import {CarService} from "../services/car.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 import {WebsocketService} from "../services/websocket.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-listing-page',
@@ -16,7 +17,7 @@ export class ListingPageComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private service: CarService, private _route: ActivatedRoute, private router: Router, public auth: AuthService, private webSocketService: WebsocketService) {
+  constructor(private service: CarService, private _route: ActivatedRoute, private router: Router, public auth: AuthService, private webSocketService: WebsocketService, public snackBar: MatSnackBar,) {
   }
 
   ngOnInit() {
@@ -24,10 +25,30 @@ export class ListingPageComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.service.getCar$(id).subscribe((sub) => {
       this.car = sub;
     }))
-
-    this.subscriptions.push(this.webSocketService.listenToEvent('car/' + id).subscribe((car: any) => {
-      this.car = car;
+    this.subscriptions.push(this.webSocketService.listenToEvent('carUpdated').subscribe((updatedCar: any) => {
+      this.validateWebsocketCarUpdated(updatedCar);
     }));
+
+    this.subscriptions.push(this.webSocketService.listenToEvent('carDeleted').subscribe((deletedCar: any) => {
+      this.validateWebsocketCarDeleted(deletedCar);
+    }));
+  }
+
+  validateWebsocketCarUpdated(updatedCar: any) {
+    if (this.car?.id === updatedCar.id) {
+      this.car = updatedCar.car;
+    }
+  }
+
+  validateWebsocketCarDeleted(deletedCar: any) {
+    if (this.car?.id === deletedCar.id) {
+      this.snackBar.open(`${this.car?.make} ${this.car?.model} ${this.car?.year} kuulutus on eemaldatud!`, '', {
+        duration: 3000,
+        horizontalPosition: "end",
+        verticalPosition: "top"
+      });
+      this.redirectToHome()
+    }
   }
 
   redirectToHome() {
